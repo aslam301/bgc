@@ -71,12 +71,10 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
 
             {/* Price */}
             <div className="ml-auto">
-              {event.ticket_price > 0 ? (
+              {event.ticket_price && event.ticket_price > 0 ? (
                 <span className="text-sm sm:text-base font-bold text-white">₹{event.ticket_price}</span>
               ) : (
-                <span className="inline-block px-2.5 py-1 text-xs font-bold text-brand-400 bg-brand-900/40 backdrop-blur-sm border border-brand-500/30 rounded-lg">
-                  FREE
-                </span>
+                <span className="text-sm sm:text-base font-bold text-white">Free</span>
               )}
             </div>
           </div>
@@ -89,7 +87,7 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
   return (
     <Link
       href={`/events/${event.id}`}
-      className="group block relative h-72 sm:h-80 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+      className="group block relative h-80 sm:h-72 md:h-80 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
     >
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -132,12 +130,12 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
 
         {/* Bottom Section */}
         <div className="flex items-center justify-between pt-3 border-t border-white/20">
-          {/* Price */}
+          {/* Price - Always show either price or Free */}
           <div>
-            {event.ticket_price > 0 ? (
+            {event.ticket_price && event.ticket_price > 0 ? (
               <span className="text-lg font-bold text-white">₹{event.ticket_price}</span>
             ) : (
-              <span className="text-sm font-semibold text-brand-300">Free</span>
+              <span className="text-base font-bold text-white">Free</span>
             )}
           </div>
 

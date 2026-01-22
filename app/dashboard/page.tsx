@@ -40,7 +40,7 @@ export default async function DashboardPage() {
   const confirmedRegistrations = registrations?.filter(r => r.status === 'confirmed') || []
 
   return (
-    <div className="min-h-screen bg-off-white">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <Navigation />
 
       {/* Main Content */}
@@ -163,47 +163,66 @@ export default async function DashboardPage() {
               )}
             </div>
 
-            {/* Become Organizer CTA - Only show if user hasn't created events */}
-            {(!myEventsCount || myEventsCount === 0) && (
-              <div className="bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl border-2 border-brand-200 p-6 sm:p-8">
-                <div className="flex flex-col sm:flex-row items-start gap-4">
-                  <div className="text-4xl sm:text-5xl">🎯</div>
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-stone-900 mb-2">
-                      Become an Event Organizer
-                    </h3>
-                    <p className="text-stone-700 mb-4">
-                      Host your own board game events! Create meetups, tournaments, and game nights.
-                      Build your community and bring gamers together.
-                    </p>
-                    <ul className="space-y-2 mb-6 text-sm text-stone-700">
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-600 font-semibold">✓</span> Free event hosting
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-600 font-semibold">✓</span> Manage registrations easily
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-600 font-semibold">✓</span> Track attendees and payments
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <span className="text-green-600 font-semibold">✓</span> Build your gaming community
-                      </li>
-                    </ul>
-                    <Link
-                      href="/events/create"
-                      className="inline-block px-6 py-3 bg-stone-900 text-white rounded-xl hover:bg-stone-800 transition font-semibold shadow-sm"
-                    >
-                      Create Your First Event →
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
+            {/* Become Organizer Card - Moved to top */}
+            {(!myEventsCount || myEventsCount === 0) && (
+              <div className="bg-gradient-to-br from-brand-50 via-brand-100 to-brand-50 rounded-2xl border-2 border-brand-200 p-6">
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="text-3xl">🎯</div>
+                  <h3 className="text-lg font-bold text-stone-900">
+                    Become an Event Organizer
+                  </h3>
+                </div>
+                <p className="text-sm text-stone-700 mb-4">
+                  Host your own board game events! Create meetups, tournaments, and game nights. Build your community and bring gamers together.
+                </p>
+                <ul className="space-y-1.5 mb-4 text-xs text-stone-700">
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600 font-semibold">✓</span> Free event hosting
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600 font-semibold">✓</span> Manage registrations easily
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600 font-semibold">✓</span> Track attendees and payments
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600 font-semibold">✓</span> Build your gaming community
+                  </li>
+                </ul>
+                <Link
+                  href="/events/create"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition font-semibold text-sm"
+                >
+                  Create Your First Event →
+                </Link>
+              </div>
+            )}
+
+            {/* Profile Card */}
+            <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
+              <h3 className="font-bold text-stone-900 mb-4">Profile</h3>
+              <div className="space-y-3 text-sm">
+                <div>
+                  <p className="text-stone-600 text-xs mb-1">Name</p>
+                  <p className="font-semibold text-stone-900">{profile?.name || 'Not set'}</p>
+                </div>
+                <div>
+                  <p className="text-stone-600 text-xs mb-1">Email</p>
+                  <p className="font-semibold text-stone-900 truncate">{user.email}</p>
+                </div>
+                <div>
+                  <p className="text-stone-600 text-xs mb-1">Role</p>
+                  <span className="inline-block px-2 py-1 bg-stone-100 text-stone-800 text-xs font-semibold rounded">
+                    {profile?.role || 'user'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* Quick Actions */}
             <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
               <h3 className="font-bold text-stone-900 mb-4">Quick Actions</h3>
@@ -232,7 +251,7 @@ export default async function DashboardPage() {
                     </div>
                   </div>
                 </Link>
-                {myEventsCount && myEventsCount > 0 && (
+                {myEventsCount > 0 && (
                   <Link
                     href="/organizer"
                     className="block p-3 rounded-xl hover:bg-brand-50 transition border border-transparent hover:border-brand-200"
@@ -246,27 +265,6 @@ export default async function DashboardPage() {
                     </div>
                   </Link>
                 )}
-              </div>
-            </div>
-
-            {/* Profile Card */}
-            <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
-              <h3 className="font-bold text-stone-900 mb-4">Profile</h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <p className="text-stone-600 text-xs mb-1">Name</p>
-                  <p className="font-semibold text-stone-900">{profile?.name || 'Not set'}</p>
-                </div>
-                <div>
-                  <p className="text-stone-600 text-xs mb-1">Email</p>
-                  <p className="font-semibold text-stone-900 truncate">{user.email}</p>
-                </div>
-                <div>
-                  <p className="text-stone-600 text-xs mb-1">Role</p>
-                  <span className="inline-block px-2 py-1 bg-stone-100 text-stone-800 text-xs font-semibold rounded">
-                    {profile?.role || 'user'}
-                  </span>
-                </div>
               </div>
             </div>
 

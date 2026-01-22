@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [state, formAction] = useActionState(login, null)
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex items-center justify-center p-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8">
@@ -23,10 +23,10 @@ export default function LoginPage() {
               />
             </div>
           </Link>
-          <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 dark:text-stone-100 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 mb-2">
             Welcome Back
           </h1>
-          <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400">
+          <p className="text-sm sm:text-base text-stone-600">
             Sign in to BoardGameCulture
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function LoginPage() {
         )}
 
         {/* Form */}
-        <form action={formAction} className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-2xl p-4 sm:p-8 sm:shadow-sm">
+        <form action={formAction} className="bg-white border border-stone-200 rounded-2xl p-4 sm:p-8 sm:shadow-sm">
           <div className="space-y-5">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">

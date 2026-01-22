@@ -15,7 +15,7 @@ export default async function OrganizerLayout({
   }
 
   return (
-    <div className="min-h-screen bg-off-white">
+    <div className="min-h-screen bg-stone-50 pt-16">
       <Navigation />
 
       {/* Organizer Header */}
@@ -48,7 +48,7 @@ export default async function OrganizerLayout({
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Sidebar Navigation */}
           <aside className="w-full lg:w-64 flex-shrink-0">
-            <nav className="bg-white rounded-2xl shadow-sm border border-stone-200 p-4 lg:sticky lg:top-6">
+            <nav className="bg-white rounded-2xl shadow-sm border border-stone-200 p-4 lg:sticky lg:top-20">
               <ul className="space-y-2">
                 <li>
                   <Link
