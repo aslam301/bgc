@@ -145,7 +145,7 @@ export default async function Home() {
             >
               <div className="absolute inset-0">
                 <img
-                  src="https://images.unsplash.com/photo-1611891487781-e144a3e9dfd8?w=800&h=600&fit=crop&q=80"
+                  src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=800&h=600&fit=crop&q=80"
                   alt="Discover Events"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -262,30 +262,30 @@ export default async function Home() {
                     className="object-contain group-hover:scale-110 transition-transform"
                   />
                 </div>
-                <span className="text-sm sm:text-base font-bold text-stone-900">BoardGameCulture</span>
+                <span className="text-base sm:text-lg font-bold text-stone-900">BoardGameCulture</span>
               </Link>
-              <p className="text-xs text-stone-600 leading-relaxed">
-                India's premier platform for board game enthusiasts.
+              <p className="text-sm text-stone-600 leading-relaxed max-w-sm">
+                India's premier platform for board game enthusiasts. Discover events, connect with players, and build communities across cities. Join thousands of gamers hosting and attending board game nights, tournaments, and meetups.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-stone-900 mb-3 text-xs sm:text-sm">Platform</h4>
-              <ul className="space-y-2 text-xs">
+              <h4 className="font-semibold text-stone-900 mb-3 text-sm">Platform</h4>
+              <ul className="space-y-2 text-sm">
                 <li><Link href="/events" className="text-stone-600 hover:text-stone-900 transition">Browse Events</Link></li>
                 <li><Link href="/events/create" className="text-stone-600 hover:text-stone-900 transition">Host Event</Link></li>
                 <li><Link href="/dashboard" className="text-stone-600 hover:text-stone-900 transition">Dashboard</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-stone-900 mb-3 text-xs sm:text-sm">Company</h4>
-              <ul className="space-y-2 text-xs">
+              <h4 className="font-semibold text-stone-900 mb-3 text-sm">Company</h4>
+              <ul className="space-y-2 text-sm">
                 <li><Link href="#" className="text-stone-600 hover:text-stone-900 transition">About</Link></li>
                 <li><Link href="#" className="text-stone-600 hover:text-stone-900 transition">Contact</Link></li>
                 <li><Link href="#" className="text-stone-600 hover:text-stone-900 transition">Privacy</Link></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-stone-200 pt-6 text-center text-xs text-stone-600">
+          <div className="border-t border-stone-200 pt-6 text-center text-sm text-stone-600">
             <p>&copy; 2026 BoardGameCulture. All rights reserved.</p>
           </div>
         </div>

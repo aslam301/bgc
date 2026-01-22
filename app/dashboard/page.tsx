@@ -68,7 +68,11 @@ export default async function DashboardPage() {
           >
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm font-semibold text-stone-600">Events Created</p>
-              <div className="text-2xl">🎯</div>
+              <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
             </div>
             <p className="text-3xl font-bold text-stone-900">{myEventsCount || 0}</p>
             <p className="text-xs text-brand-600 mt-2 font-semibold">Manage events →</p>
@@ -77,7 +81,11 @@ export default async function DashboardPage() {
           <div className="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm font-semibold text-stone-600">Events Registered</p>
-              <div className="text-2xl">🎟️</div>
+              <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+                </svg>
+              </div>
             </div>
             <p className="text-3xl font-bold text-stone-900">{confirmedRegistrations.length}</p>
             <p className="text-xs text-stone-500 mt-2">Active registrations</p>
@@ -86,7 +94,11 @@ export default async function DashboardPage() {
           <div className="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm font-semibold text-stone-600">Community Rank</p>
-              <div className="text-2xl">⭐</div>
+              <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center">
+                <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
             </div>
             <p className="text-3xl font-bold text-stone-900">
               {myEventsCount && myEventsCount > 0 ? 'Organizer' : 'Player'}
@@ -106,7 +118,11 @@ export default async function DashboardPage() {
 
               {!registrations || registrations.length === 0 ? (
                 <div className="p-12 text-center">
-                  <div className="text-5xl mb-4">🎲</div>
+                  <div className="w-16 h-16 bg-stone-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
                   <h3 className="text-lg font-bold text-stone-900 mb-2">
                     No Events Yet
                   </h3>
@@ -171,7 +187,11 @@ export default async function DashboardPage() {
             {(!myEventsCount || myEventsCount === 0) && (
               <div className="bg-gradient-to-br from-brand-50 via-brand-100 to-brand-50 rounded-2xl border-2 border-brand-200 p-6">
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="text-3xl">🎯</div>
+                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                  </div>
                   <h3 className="text-lg font-bold text-stone-900">
                     Become an Event Organizer
                   </h3>
@@ -181,16 +201,28 @@ export default async function DashboardPage() {
                 </p>
                 <ul className="space-y-1.5 mb-4 text-xs text-stone-700">
                   <li className="flex items-center gap-2">
-                    <span className="text-green-600 font-semibold">✓</span> Free event hosting
+                    <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Free event hosting</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-green-600 font-semibold">✓</span> Manage registrations easily
+                    <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Manage registrations easily</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-green-600 font-semibold">✓</span> Track attendees and payments
+                    <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Track attendees and payments</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-green-600 font-semibold">✓</span> Build your gaming community
+                    <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Build your gaming community</span>
                   </li>
                 </ul>
                 <Link
@@ -232,7 +264,11 @@ export default async function DashboardPage() {
                   className="block p-3 rounded-xl hover:bg-brand-50 transition border border-transparent hover:border-brand-200"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">📅</span>
+                    <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
                     <div>
                       <p className="font-semibold text-stone-900 text-sm">Browse Events</p>
                       <p className="text-xs text-stone-600">Find game nights</p>
@@ -244,7 +280,11 @@ export default async function DashboardPage() {
                   className="block p-3 rounded-xl hover:bg-brand-50 transition border border-transparent hover:border-brand-200"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">➕</span>
+                    <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      </svg>
+                    </div>
                     <div>
                       <p className="font-semibold text-stone-900 text-sm">Create Event</p>
                       <p className="text-xs text-stone-600">Host your own</p>
@@ -257,7 +297,11 @@ export default async function DashboardPage() {
                     className="block p-3 rounded-xl hover:bg-brand-50 transition border border-transparent hover:border-brand-200"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl">🎯</span>
+                      <div className="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                      </div>
                       <div>
                         <p className="font-semibold text-stone-900 text-sm">My Events</p>
                         <p className="text-xs text-stone-600">Manage & track</p>

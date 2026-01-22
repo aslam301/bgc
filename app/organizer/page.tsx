@@ -37,7 +37,11 @@ export default async function OrganizerDashboard() {
               <p className="text-sm font-semibold text-stone-600">Total Events</p>
               <p className="text-3xl font-bold text-stone-900 mt-2">{totalEvents}</p>
             </div>
-            <div className="text-4xl">🎲</div>
+            <div className="w-12 h-12 bg-stone-100 rounded-lg flex items-center justify-center">
+              <svg className="w-7 h-7 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -47,7 +51,11 @@ export default async function OrganizerDashboard() {
               <p className="text-sm font-semibold text-stone-600">Published</p>
               <p className="text-3xl font-bold text-green-600 mt-2">{publishedEvents}</p>
             </div>
-            <div className="text-4xl">✓</div>
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg className="w-7 h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
           </div>
         </div>
 
@@ -57,7 +65,11 @@ export default async function OrganizerDashboard() {
               <p className="text-sm font-semibold text-stone-600">Pending Approval</p>
               <p className="text-3xl font-bold text-orange-600 mt-2">{pendingEvents}</p>
             </div>
-            <div className="text-4xl">⏳</div>
+            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+              <svg className="w-7 h-7 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
@@ -65,7 +77,11 @@ export default async function OrganizerDashboard() {
       {/* Events List */}
       {!events || events.length === 0 ? (
         <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-12 text-center">
-          <div className="text-6xl mb-4">🎲</div>
+          <div className="w-20 h-20 bg-stone-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg className="w-12 h-12 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
           <h3 className="text-2xl font-bold text-stone-900 mb-2">No Events Yet</h3>
           <p className="text-stone-600 mb-6">
             Create your first event and start building your community!
@@ -177,7 +193,7 @@ export default async function OrganizerDashboard() {
                       <>
                         <Link
                           href={`/organizer/events/${event.id}/edit`}
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition font-medium text-sm"
+                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition font-medium text-sm shadow-sm"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -186,7 +202,7 @@ export default async function OrganizerDashboard() {
                         </Link>
                         <Link
                           href={`/organizer/events/${event.id}/attendees`}
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-700 text-white rounded-lg hover:bg-stone-800 transition font-medium text-sm"
+                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-100 text-stone-900 border border-stone-300 rounded-lg hover:bg-stone-200 transition font-medium text-sm"
                         >
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
