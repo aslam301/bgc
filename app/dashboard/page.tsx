@@ -101,7 +101,7 @@ export default async function DashboardPage() {
               </div>
             </div>
             <p className="text-3xl font-bold text-stone-900">
-              {myEventsCount && myEventsCount > 0 ? 'Organizer' : 'Player'}
+              {(myEventsCount !== null && myEventsCount > 0) ? 'Organizer' : 'Player'}
             </p>
             <p className="text-xs text-stone-500 mt-2">Keep gaming!</p>
           </div>
@@ -291,7 +291,7 @@ export default async function DashboardPage() {
                     </div>
                   </div>
                 </Link>
-                {myEventsCount > 0 && (
+                {(myEventsCount !== null && myEventsCount > 0) && (
                   <Link
                     href="/organizer"
                     className="block p-3 rounded-xl hover:bg-brand-50 transition border border-transparent hover:border-brand-200"
