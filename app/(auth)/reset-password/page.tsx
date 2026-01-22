@@ -3,6 +3,7 @@
 import { useActionState } from 'react'
 import { resetPassword } from '@/lib/actions/password-reset'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
@@ -26,7 +27,14 @@ export default function ResetPasswordPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block mb-6">
-            <span className="text-4xl">🎲</span>
+            <div className="relative w-20 h-20 mx-auto">
+              <Image
+                src="/logo.png"
+                alt="BoardGameCulture Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </Link>
           <h1 className="text-3xl font-bold text-stone-900 mb-2">
             Reset Password
