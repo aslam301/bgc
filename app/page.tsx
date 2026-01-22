@@ -137,34 +137,85 @@ export default async function Home() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            <div className="bg-stone-50 dark:bg-stone-800/50 p-6 sm:p-7 rounded-2xl border border-stone-200 dark:border-stone-700">
-              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🎲</div>
-              <h3 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-100 mb-2 sm:mb-3">
-                Discover Events
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                Find board game nights, tournaments, and meetups happening near you. Never miss a game night again.
-              </p>
-            </div>
+            {/* Discover Events Card */}
+            <Link
+              href="/events"
+              className="group relative h-64 sm:h-72 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1611891487781-e144a3e9dfd8?w=800&h=600&fit=crop&q=80"
+                  alt="Discover Events"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-brand-300 transition">
+                  Discover Events
+                </h3>
+                <p className="text-sm text-white/90 leading-relaxed mb-4">
+                  Find board game nights, tournaments, and meetups happening near you.
+                </p>
+                <div className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-brand-300 transition">
+                  Browse Events
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
 
-            <div className="bg-stone-50 dark:bg-stone-800/50 p-6 sm:p-7 rounded-2xl border border-stone-200 dark:border-stone-700">
-              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🎯</div>
-              <h3 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-100 mb-2 sm:mb-3">
-                Host Events
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                Organize your own board game events with our easy-to-use platform. Manage registrations effortlessly.
-              </p>
-            </div>
+            {/* Host Events Card */}
+            <Link
+              href="/events/create"
+              className="group relative h-64 sm:h-72 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+            >
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1632501641765-e568d28b0015?w=800&h=600&fit=crop&q=80"
+                  alt="Host Events"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-brand-300 transition">
+                  Host Events
+                </h3>
+                <p className="text-sm text-white/90 leading-relaxed mb-4">
+                  Organize your own board game events with our easy-to-use platform.
+                </p>
+                <div className="inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-brand-300 transition">
+                  Create Event
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
 
-            <div className="bg-stone-50 dark:bg-stone-800/50 p-6 sm:p-7 rounded-2xl border border-stone-200 dark:border-stone-700 sm:col-span-2 lg:col-span-1">
-              <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">👥</div>
-              <h3 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-100 mb-2 sm:mb-3">
-                Build Community
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                Connect with fellow board game enthusiasts, share experiences, and grow the gaming culture together.
-              </p>
+            {/* Build Community Card */}
+            <div className="group relative h-64 sm:h-72 rounded-2xl overflow-hidden sm:col-span-2 lg:col-span-1">
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop&q=80"
+                  alt="Build Community"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                  Build Community
+                </h3>
+                <p className="text-sm text-white/90 leading-relaxed mb-4">
+                  Connect with fellow board game enthusiasts and grow the gaming culture.
+                </p>
+                <div className="inline-flex items-center gap-2 text-sm font-semibold text-white/80">
+                  Coming Soon
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -201,10 +252,17 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 mb-8">
             <div className="col-span-2">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-lg sm:text-xl">🎲</span>
+              <Link href="/" className="flex items-center gap-2 mb-3 group">
+                <div className="relative w-8 h-8">
+                  <Image
+                    src="/logo.png"
+                    alt="BoardGameCulture"
+                    fill
+                    className="object-contain group-hover:scale-110 transition-transform"
+                  />
+                </div>
                 <span className="text-sm sm:text-base font-bold text-stone-900 dark:text-stone-100">BoardGameCulture</span>
-              </div>
+              </Link>
               <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
                 India's premier platform for board game enthusiasts.
               </p>

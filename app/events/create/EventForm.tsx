@@ -16,7 +16,7 @@ export default function EventForm({ userId, cities }: EventFormProps) {
   const [state, formAction] = useActionState(createEvent, null)
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-8">
+    <div className="bg-white dark:bg-stone-900 rounded-lg sm:shadow-md p-4 sm:p-8">
       {/* Success Message */}
       {state?.success && (
         <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">

@@ -19,7 +19,7 @@ export default async function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-b border-stone-200 dark:border-stone-800">
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -41,23 +41,8 @@ export default async function Navigation() {
             </span>
           </Link>
 
-          {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center gap-1">
-            <Link
-              href="/events"
-              className="px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg transition font-medium"
-            >
-              Browse Events
-            </Link>
-            {user && (
-              <Link
-                href="/events/create"
-                className="px-4 py-2 text-sm text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg transition font-medium"
-              >
-                Create Event
-              </Link>
-            )}
-          </div>
+          {/* Empty spacer for layout */}
+          <div className="hidden md:block"></div>
 
           {/* Menu */}
           <div className="flex items-center gap-2">
@@ -67,25 +52,6 @@ export default async function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {user && (
-        <div className="md:hidden border-t border-stone-200 dark:border-stone-800 bg-white/90 dark:bg-stone-900/90 backdrop-blur-sm">
-          <div className="flex justify-around py-2 px-4">
-            <Link
-              href="/events"
-              className="flex-1 text-center px-3 py-2 text-sm text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg transition font-medium"
-            >
-              Browse
-            </Link>
-            <Link
-              href="/events/create"
-              className="flex-1 text-center px-3 py-2 text-sm text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-50 dark:hover:bg-stone-800 rounded-lg transition font-medium"
-            >
-              Create
-            </Link>
-          </div>
-        </div>
-      )}
     </nav>
   )
 }

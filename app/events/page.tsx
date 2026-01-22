@@ -54,16 +54,16 @@ export default async function EventsPage({
     .sort()
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 pt-16">
       <Navigation />
 
       {/* Hero Section */}
-      <div className="bg-white border-b border-slate-200">
+      <div className="bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-2 sm:mb-3">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-2 sm:mb-3">
             Discover Events
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl">
+          <p className="text-base sm:text-lg lg:text-xl text-stone-600 dark:text-stone-400 max-w-2xl">
             Find and join board game meetups, tournaments, and game nights across India
           </p>
         </div>
@@ -71,13 +71,13 @@ export default async function EventsPage({
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Filters */}
-        <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-6 mb-6 sm:mb-8">
+        <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-4 sm:p-6 mb-6 sm:mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
-            <h2 className="text-base sm:text-lg font-semibold text-slate-900">Filter by City</h2>
+            <h2 className="text-base sm:text-lg font-semibold text-stone-900 dark:text-stone-100">Filter by City</h2>
             {params.city && (
               <Link
                 href="/events"
-                className="text-sm text-slate-600 hover:text-slate-900 font-medium self-start sm:self-auto"
+                className="text-sm text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 font-medium self-start sm:self-auto"
               >
                 Clear filters ×
               </Link>
