@@ -23,10 +23,10 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
     return (
       <Link
         href={`/events/${event.id}`}
-        className="group flex gap-4 p-4 sm:p-5 bg-white border border-stone-200 rounded-2xl hover:border-brand-300 hover:shadow-md transition-all"
+        className="group flex gap-4 p-4 sm:p-5 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-2xl hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-md transition-all"
       >
         {/* Time Badge */}
-        <div className="flex-shrink-0 text-sm text-stone-600 font-medium pt-1">
+        <div className="flex-shrink-0 text-sm text-stone-600 dark:text-stone-400 font-medium pt-1">
           {format(new Date(event.start_date), 'HH:mm')}
         </div>
 
@@ -34,7 +34,7 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
         <div className="flex-1 min-w-0 flex flex-col sm:flex-row gap-4">
           <div className="flex-1 min-w-0">
             {/* Title */}
-            <h3 className="font-bold text-stone-900 text-lg sm:text-xl mb-2 group-hover:text-brand-700 transition line-clamp-2">
+            <h3 className="font-bold text-stone-900 dark:text-stone-100 text-lg sm:text-xl mb-2 group-hover:text-brand-700 dark:group-hover:text-brand-400 transition line-clamp-2">
               {event.title}
             </h3>
 
@@ -44,15 +44,15 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
                 <div className="w-6 h-6 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center text-white text-xs font-semibold">
                   {event.organizer.name.charAt(0).toUpperCase()}
                 </div>
-                <span className="text-sm text-stone-600">
-                  By <span className="font-medium text-stone-700">{event.organizer.name}</span>
+                <span className="text-sm text-stone-600 dark:text-stone-400">
+                  By <span className="font-medium text-stone-700 dark:text-stone-300">{event.organizer.name}</span>
                 </span>
               </div>
             )}
 
             {/* Location */}
-            <div className="flex items-center gap-1.5 text-sm text-stone-600">
-              <svg className="w-4 h-4 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-1.5 text-sm text-stone-600 dark:text-stone-400">
+              <svg className="w-4 h-4 text-stone-400 dark:text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -62,9 +62,9 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
             {/* Price */}
             <div className="mt-3">
               {event.ticket_price > 0 ? (
-                <span className="text-sm font-semibold text-stone-900">₹{event.ticket_price}</span>
+                <span className="text-sm font-semibold text-stone-900 dark:text-stone-100">₹{event.ticket_price}</span>
               ) : (
-                <span className="inline-block px-2 py-1 text-xs font-bold text-brand-700 bg-brand-50 border border-brand-200 rounded-md">
+                <span className="inline-block px-2 py-1 text-xs font-bold text-brand-700 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20 border border-brand-200 dark:border-brand-700 rounded-md">
                   FREE
                 </span>
               )}
@@ -88,7 +88,7 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
   return (
     <Link
       href={`/events/${event.id}`}
-      className="group block bg-white border border-stone-200 rounded-2xl overflow-hidden hover:border-brand-300 hover:shadow-lg transition-all duration-300"
+      className="group block bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-2xl overflow-hidden hover:border-brand-300 dark:hover:border-brand-600 hover:shadow-lg transition-all duration-300"
     >
       {/* Event Image */}
       <div className="relative h-36 sm:h-40 overflow-hidden bg-stone-200">
@@ -108,32 +108,32 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
       {/* Event Content */}
       <div className="p-4">
         {/* Date */}
-        <div className="text-xs font-semibold text-brand-600 mb-2">
+        <div className="text-xs font-semibold text-brand-600 dark:text-brand-400 mb-2">
           {format(new Date(event.start_date), 'EEE, MMM d · h:mm a').toUpperCase()}
         </div>
 
         {/* Title */}
-        <h3 className="font-bold text-stone-900 text-base mb-3 line-clamp-2 group-hover:text-brand-700 transition min-h-[3rem]">
+        <h3 className="font-bold text-stone-900 dark:text-stone-100 text-base mb-3 line-clamp-2 group-hover:text-brand-700 dark:group-hover:text-brand-400 transition min-h-[3rem]">
           {event.title}
         </h3>
 
         {/* Location */}
-        <div className="flex items-center gap-1.5 text-sm text-stone-600 mb-3">
-          <svg className="w-4 h-4 text-stone-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="flex items-center gap-1.5 text-sm text-stone-600 dark:text-stone-400 mb-3">
+          <svg className="w-4 h-4 text-stone-400 dark:text-stone-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <span className="truncate font-medium text-stone-700">{event.location_city}</span>
+          <span className="truncate font-medium text-stone-700 dark:text-stone-300">{event.location_city}</span>
         </div>
 
         {/* Bottom Section */}
-        <div className="flex items-center justify-between pt-3 border-t border-stone-100">
+        <div className="flex items-center justify-between pt-3 border-t border-stone-100 dark:border-stone-700">
           {/* Price */}
           <div>
             {event.ticket_price > 0 ? (
-              <span className="text-lg font-bold text-stone-900">₹{event.ticket_price}</span>
+              <span className="text-lg font-bold text-stone-900 dark:text-stone-100">₹{event.ticket_price}</span>
             ) : (
-              <span className="text-sm font-semibold text-brand-600">Free</span>
+              <span className="text-sm font-semibold text-brand-600 dark:text-brand-400">Free</span>
             )}
           </div>
 
