@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [state, formAction] = useActionState(login, null)
 
   return (
-    <div className="min-h-screen bg-off-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-off-white flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
@@ -52,7 +52,7 @@ export default function LoginPage() {
         )}
 
         {/* Form */}
-        <form action={formAction} className="bg-white border border-stone-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <form action={formAction} className="bg-white border border-stone-200 rounded-2xl p-5 sm:p-8 shadow-sm">
           <div className="space-y-5">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">

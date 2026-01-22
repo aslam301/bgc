@@ -76,6 +76,16 @@ const config: Config = {
       },
       backdropBlur: {
         xs: '2px',
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+        'slide-in': 'slideIn 0.3s ease-out',
+      },
+      keyframes: {
+        slideIn: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
       }
     },
   },

@@ -12,7 +12,9 @@
       "WebFetch(domain:makemypass.com)",
       "WebFetch(domain:lu.ma)",
       "WebFetch(domain:luma.com)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(dir:*)"
     ]
   }
 }

@@ -46,17 +46,17 @@ export default async function DashboardPage() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         {/* Welcome Section */}
-        <div className="bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 rounded-2xl shadow-sm p-6 sm:p-8 mb-8 text-white">
+        <div className="bg-gradient-to-br from-stone-800 via-stone-900 to-black rounded-2xl shadow-sm p-6 sm:p-8 mb-8 border border-stone-700">
           <div className="flex items-start justify-between">
             <div>
               <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-white">
                 Welcome back, {profile?.name || 'Gamer'}!
               </h1>
-              <p className="text-white/90">
+              <p className="text-stone-200">
                 Ready for your next board game adventure?
               </p>
             </div>
-            <div className="hidden sm:block text-5xl sm:text-6xl opacity-20">🎲</div>
+            <div className="hidden sm:block text-5xl sm:text-6xl opacity-10 text-brand-400">🎲</div>
           </div>
         </div>
 
