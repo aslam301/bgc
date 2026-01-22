@@ -1,6 +1,8 @@
 import { getUser } from '@/lib/actions/auth'
 import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
 import EventForm from './EventForm'
+import Navigation from '@/components/Navigation'
 
 export default async function CreateEventPage() {
   const user = await getUser()
@@ -9,22 +11,28 @@ export default async function CreateEventPage() {
     redirect('/login')
   }
 
+  // Fetch active cities
+  const supabase = await createClient()
+  const { data: cities } = await supabase
+    .from('cities')
+    .select('id, name')
+    .eq('is_active', true)
+    .order('display_order', { ascending: true })
+
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-off-white">
+      <Navigation />
+
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-slate-900">Create Event</h1>
-              <p className="text-slate-600 mt-1">Host a board game event in your community</p>
-            </div>
-          </div>
+      <div className="bg-white border-b border-stone-200">
+        <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-stone-900 mb-2">Create Event</h1>
+          <p className="text-base sm:text-lg text-stone-600">Host a board game event in your community</p>
         </div>
-      </header>
+      </div>
 
       <main className="max-w-4xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <EventForm userId={user.id} />
+        <EventForm userId={user.id} cities={cities || []} />
       </main>
     </div>
   )

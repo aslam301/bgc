@@ -1,6 +1,7 @@
 import { getUser } from '@/lib/actions/auth'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import Navigation from '@/components/Navigation'
 
 export default async function OrganizerLayout({
   children,
@@ -14,25 +15,27 @@ export default async function OrganizerLayout({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-off-white">
+      <Navigation />
+
       {/* Organizer Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+      <header className="bg-white border-b border-stone-200">
+        <div className="max-w-7xl mx-auto px-4 py-4 sm:py-6 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">Organizer Dashboard</h1>
-              <p className="text-sm text-slate-600 mt-1">Manage your events and attendees</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-stone-900">Organizer Dashboard</h1>
+              <p className="text-sm text-stone-600 mt-1">Manage your events and attendees</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 w-full sm:w-auto">
               <Link
                 href="/events/create"
-                className="px-4 py-2 text-sm bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition font-medium"
+                className="flex-1 sm:flex-none px-4 py-2 text-sm bg-stone-900 text-white rounded-xl hover:bg-stone-800 transition font-semibold text-center shadow-sm"
               >
                 + Create Event
               </Link>
               <Link
                 href="/dashboard"
-                className="px-4 py-2 text-sm bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition"
+                className="flex-1 sm:flex-none px-4 py-2 text-sm bg-stone-100 text-stone-700 rounded-xl hover:bg-stone-200 transition font-medium text-center"
               >
                 ← Dashboard
               </Link>
@@ -42,15 +45,15 @@ export default async function OrganizerLayout({
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-        <div className="flex gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Sidebar Navigation */}
-          <aside className="w-64 flex-shrink-0">
-            <nav className="bg-white rounded-lg shadow-md p-4 sticky top-6">
+          <aside className="w-full lg:w-64 flex-shrink-0">
+            <nav className="bg-white rounded-2xl shadow-sm border border-stone-200 p-4 lg:sticky lg:top-6">
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/organizer"
-                    className="block px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-100 transition"
+                    className="block px-4 py-2 rounded-xl text-stone-900 font-medium hover:bg-brand-50 hover:text-brand-700 transition"
                   >
                     🎲 My Events
                   </Link>
@@ -58,7 +61,7 @@ export default async function OrganizerLayout({
                 <li>
                   <Link
                     href="/organizer/attendees"
-                    className="block px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-100 transition"
+                    className="block px-4 py-2 rounded-xl text-stone-900 font-medium hover:bg-brand-50 hover:text-brand-700 transition"
                   >
                     👥 All Attendees
                   </Link>
@@ -66,7 +69,7 @@ export default async function OrganizerLayout({
                 <li>
                   <Link
                     href="/organizer/earnings"
-                    className="block px-4 py-2 rounded-lg text-slate-700 hover:bg-slate-100 transition opacity-50 cursor-not-allowed"
+                    className="block px-4 py-2 rounded-xl text-stone-500 font-medium opacity-50 cursor-not-allowed"
                   >
                     💰 Earnings (Coming Soon)
                   </Link>
@@ -76,7 +79,7 @@ export default async function OrganizerLayout({
           </aside>
 
           {/* Main Content */}
-          <main className="flex-1">
+          <main className="flex-1 min-w-0">
             {children}
           </main>
         </div>

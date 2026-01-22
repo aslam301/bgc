@@ -145,8 +145,8 @@ export default async function EventsPage({
           </div>
         ) : (
           <>
-            {/* Desktop: 2-column grid */}
-            <div className="hidden sm:grid sm:grid-cols-2 gap-4 lg:gap-6">
+            {/* Desktop: 4-column grid, Tablet: 2-column, Mobile: list */}
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
               {events.map((event) => (
                 <EventCard key={event.id} event={event} variant="grid" />
               ))}

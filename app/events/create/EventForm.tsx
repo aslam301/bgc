@@ -8,9 +8,10 @@ import Link from 'next/link'
 
 interface EventFormProps {
   userId: string
+  cities: Array<{ id: string; name: string }>
 }
 
-export default function EventForm({ userId }: EventFormProps) {
+export default function EventForm({ userId, cities }: EventFormProps) {
   const [description, setDescription] = useState('<p>Describe your event here...</p>')
   const [state, formAction] = useActionState(createEvent, null)
 
@@ -135,14 +136,19 @@ export default function EventForm({ userId }: EventFormProps) {
             <label htmlFor="location_city" className="block text-sm font-medium text-slate-700 mb-2">
               City *
             </label>
-            <input
+            <select
               id="location_city"
               name="location_city"
-              type="text"
               required
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
-              placeholder="Mumbai"
-            />
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white"
+            >
+              <option value="">Select a city</option>
+              {cities.map((city) => (
+                <option key={city.id} value={city.name}>
+                  {city.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 

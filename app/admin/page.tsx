@@ -37,53 +37,53 @@ export default async function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-slate-900">Overview</h2>
-        <p className="text-slate-600 mt-1">Platform statistics and recent activity</p>
+        <h2 className="text-3xl font-bold text-stone-900">Overview</h2>
+        <p className="text-stone-600 mt-1">Platform statistics and recent activity</p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">Total Events</p>
-              <p className="text-3xl font-bold text-slate-900 mt-2">{totalEvents || 0}</p>
+              <p className="text-sm font-semibold text-stone-600">Total Events</p>
+              <p className="text-3xl font-bold text-stone-900 mt-2">{totalEvents || 0}</p>
             </div>
             <div className="text-4xl">🎲</div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="flex items-center justify-between">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
+          <div className="flex items-center justify-between mb-2">
             <div>
-              <p className="text-sm text-slate-600">Pending Approval</p>
+              <p className="text-sm font-semibold text-stone-600">Pending Approval</p>
               <p className="text-3xl font-bold text-orange-600 mt-2">{pendingEvents || 0}</p>
             </div>
             <div className="text-4xl">⏳</div>
           </div>
           <Link
             href="/admin/events?filter=pending"
-            className="text-sm text-orange-600 hover:underline mt-2 inline-block"
+            className="text-sm text-orange-600 hover:text-orange-700 font-semibold"
           >
             Review now →
           </Link>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">Published Events</p>
+              <p className="text-sm font-semibold text-stone-600">Published Events</p>
               <p className="text-3xl font-bold text-green-600 mt-2">{publishedEvents || 0}</p>
             </div>
-            <div className="text-4xl">✅</div>
+            <div className="text-4xl">✓</div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">Total Users</p>
-              <p className="text-3xl font-bold text-slate-900 mt-2">{totalUsers || 0}</p>
+              <p className="text-sm font-semibold text-stone-600">Total Users</p>
+              <p className="text-3xl font-bold text-stone-900 mt-2">{totalUsers || 0}</p>
             </div>
             <div className="text-4xl">👥</div>
           </div>
@@ -91,12 +91,12 @@ export default async function AdminDashboard() {
       </div>
 
       {/* Recent Events */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-slate-900">Recent Events</h3>
+          <h3 className="text-xl font-bold text-stone-900">Recent Events</h3>
           <Link
             href="/admin/events"
-            className="text-sm text-slate-600 hover:text-slate-900"
+            className="text-sm text-brand-600 hover:text-brand-700 font-semibold"
           >
             View all →
           </Link>
@@ -107,38 +107,38 @@ export default async function AdminDashboard() {
             {recentEvents.map((event) => (
               <div
                 key={event.id}
-                className="flex items-center justify-between p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition"
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-stone-200 rounded-xl hover:bg-stone-50 transition gap-3"
               >
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <Link
                     href={`/admin/events/${event.id}`}
-                    className="font-medium text-slate-900 hover:text-slate-700"
+                    className="font-semibold text-stone-900 hover:text-brand-600 transition"
                   >
                     {event.title}
                   </Link>
-                  <p className="text-sm text-slate-600 mt-1">
+                  <p className="text-sm text-stone-600 mt-1">
                     Created {new Date(event.created_at).toLocaleDateString()}
                   </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span
-                    className={`px-3 py-1 text-xs font-medium rounded-full ${
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${
                       event.status === 'published'
-                        ? 'bg-green-100 text-green-800'
+                        ? 'bg-green-50 border border-green-200 text-green-800'
                         : event.status === 'draft'
-                        ? 'bg-slate-100 text-slate-800'
-                        : 'bg-yellow-100 text-yellow-800'
+                        ? 'bg-stone-50 border border-stone-200 text-stone-800'
+                        : 'bg-yellow-50 border border-yellow-200 text-yellow-800'
                     }`}
                   >
                     {event.status}
                   </span>
                   <span
-                    className={`px-3 py-1 text-xs font-medium rounded-full ${
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${
                       event.moderation_status === 'approved'
-                        ? 'bg-green-100 text-green-800'
+                        ? 'bg-green-50 border border-green-200 text-green-800'
                         : event.moderation_status === 'pending'
-                        ? 'bg-orange-100 text-orange-800'
-                        : 'bg-red-100 text-red-800'
+                        ? 'bg-orange-50 border border-orange-200 text-orange-800'
+                        : 'bg-red-50 border border-red-200 text-red-800'
                     }`}
                   >
                     {event.moderation_status}
@@ -148,36 +148,36 @@ export default async function AdminDashboard() {
             ))}
           </div>
         ) : (
-          <p className="text-slate-600 text-center py-8">No events yet</p>
+          <p className="text-stone-600 text-center py-8">No events yet</p>
         )}
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-xl font-bold text-slate-900 mb-4">Quick Actions</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
+        <h3 className="text-xl font-bold text-stone-900 mb-4">Quick Actions</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Link
             href="/admin/events?filter=pending"
-            className="p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition text-center"
+            className="p-4 border border-stone-200 rounded-xl hover:bg-brand-50 hover:border-brand-200 transition text-center"
           >
             <div className="text-3xl mb-2">⏳</div>
-            <p className="font-medium text-slate-900">Review Pending Events</p>
-            <p className="text-sm text-slate-600 mt-1">{pendingEvents || 0} waiting</p>
+            <p className="font-semibold text-stone-900">Review Pending Events</p>
+            <p className="text-sm text-stone-600 mt-1">{pendingEvents || 0} waiting</p>
           </Link>
 
           <Link
             href="/admin/events"
-            className="p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition text-center"
+            className="p-4 border border-stone-200 rounded-xl hover:bg-brand-50 hover:border-brand-200 transition text-center"
           >
             <div className="text-3xl mb-2">🎲</div>
-            <p className="font-medium text-slate-900">Manage All Events</p>
-            <p className="text-sm text-slate-600 mt-1">{totalEvents || 0} total</p>
+            <p className="font-semibold text-stone-900">Manage All Events</p>
+            <p className="text-sm text-stone-600 mt-1">{totalEvents || 0} total</p>
           </Link>
 
-          <div className="p-4 border border-slate-200 rounded-lg bg-slate-50 opacity-50 text-center">
+          <div className="p-4 border border-stone-200 rounded-xl bg-stone-50 opacity-50 text-center">
             <div className="text-3xl mb-2">📊</div>
-            <p className="font-medium text-slate-900">View Reports</p>
-            <p className="text-sm text-slate-600 mt-1">Coming Soon</p>
+            <p className="font-semibold text-stone-900">View Reports</p>
+            <p className="text-sm text-stone-600 mt-1">Coming Soon</p>
           </div>
         </div>
       </div>

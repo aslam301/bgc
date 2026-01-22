@@ -10,6 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Luma-inspired color palette
+        brand: {
+          DEFAULT: '#a89925',
+          50: '#fdfcf5',
+          100: '#f9f6e0',
+          200: '#f3edc0',
+          300: '#ebe096',
+          400: '#d9c85a',
+          500: '#a89925',
+          600: '#8a7a1e',
+          700: '#6b5e17',
+          800: '#4d4310',
+          900: '#2e2809',
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -51,11 +65,18 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      backgroundColor: {
+        'off-white': '#fcfcfa',
+        'warm-gray': '#f5f5f4',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      backdropBlur: {
+        xs: '2px',
+      }
     },
   },
   plugins: [require('@tailwindcss/typography')],

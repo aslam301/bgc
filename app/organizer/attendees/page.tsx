@@ -39,17 +39,17 @@ export default async function AllAttendeesPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">All Attendees</h1>
-        <p className="text-slate-600 mt-1">View all registrations across your events</p>
+        <h1 className="text-3xl font-bold text-stone-900">All Attendees</h1>
+        <p className="text-stone-600 mt-1">View all registrations across your events</p>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">Total Registrations</p>
-              <p className="text-3xl font-bold text-slate-900 mt-2">
+              <p className="text-sm font-semibold text-stone-600">Total Registrations</p>
+              <p className="text-3xl font-bold text-stone-900 mt-2">
                 {totalAttendees}
               </p>
             </div>
@@ -57,20 +57,20 @@ export default async function AllAttendeesPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">Confirmed</p>
+              <p className="text-sm font-semibold text-stone-600">Confirmed</p>
               <p className="text-3xl font-bold text-green-600 mt-2">{confirmedCount}</p>
             </div>
-            <div className="text-4xl">✅</div>
+            <div className="text-4xl">✓</div>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-slate-600">Pending Payment</p>
+              <p className="text-sm font-semibold text-stone-600">Pending Payment</p>
               <p className="text-3xl font-bold text-orange-600 mt-2">{pendingCount}</p>
             </div>
             <div className="text-4xl">⏳</div>
@@ -79,76 +79,76 @@ export default async function AllAttendeesPage() {
       </div>
 
       {/* Attendees List */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div className="p-6 border-b border-slate-200">
-          <h3 className="text-lg font-bold text-slate-900">All Attendees</h3>
+      <div className="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden">
+        <div className="p-6 border-b border-stone-200">
+          <h3 className="text-lg font-bold text-stone-900">All Attendees</h3>
         </div>
 
         {!registrations || registrations.length === 0 ? (
           <div className="p-12 text-center">
             <div className="text-6xl mb-4">👥</div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-2">No Attendees Yet</h3>
-            <p className="text-slate-600">
+            <h3 className="text-xl font-bold text-stone-900 mb-2">No Attendees Yet</h3>
+            <p className="text-stone-600">
               When people register for your events, they'll appear here.
             </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-50">
+              <thead className="bg-stone-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-stone-700 uppercase tracking-wider">
                     Attendee
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-stone-700 uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-stone-700 uppercase tracking-wider">
                     Event
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-stone-700 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-stone-700 uppercase tracking-wider">
                     Registered
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-slate-200">
+              <tbody className="bg-white divide-y divide-stone-200">
                 {registrations.map((registration) => (
-                  <tr key={registration.id} className="hover:bg-slate-50">
+                  <tr key={registration.id} className="hover:bg-stone-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-slate-900">
+                      <div className="text-sm font-semibold text-stone-900">
                         {registration.attendee?.name || 'Unknown'}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-slate-600">
+                      <div className="text-sm text-stone-600">
                         {registration.attendee?.email || 'N/A'}
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <Link
                         href={`/organizer/events/${registration.event_id}/attendees`}
-                        className="text-sm text-purple-600 hover:text-purple-700 font-medium"
+                        className="text-sm text-brand-600 hover:text-brand-700 font-semibold"
                       >
                         {registration.event?.title || 'Unknown Event'}
                       </Link>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
-                        className={`px-3 py-1 text-xs font-medium rounded-full ${
+                        className={`px-3 py-1 text-xs font-semibold rounded-full ${
                           registration.status === 'confirmed'
-                            ? 'bg-green-100 text-green-800'
+                            ? 'bg-green-50 border border-green-200 text-green-800'
                             : registration.status === 'pending_payment'
-                            ? 'bg-orange-100 text-orange-800'
-                            : 'bg-slate-100 text-slate-800'
+                            ? 'bg-orange-50 border border-orange-200 text-orange-800'
+                            : 'bg-stone-50 border border-stone-200 text-stone-800'
                         }`}
                       >
                         {registration.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-stone-600">
                       {registration.registered_at
                         ? format(new Date(registration.registered_at), 'PP p')
                         : 'N/A'}
