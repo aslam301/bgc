@@ -8,14 +8,29 @@ export default async function Home() {
   const { data: { user } } = await supabase.auth.getUser()
 
   // Get upcoming events
-  const { data: upcomingEvents } = await supabase
+  const { data: eventsData } = await supabase
     .from('events')
-    .select('id, title, start_date, location_city, ticket_price, organizer:profiles!organizer_id(name)')
+    .select(`
+      id,
+      title,
+      start_date,
+      location_city,
+      ticket_price,
+      organizer:profiles!organizer_id(name)
+    `)
     .eq('status', 'published')
     .eq('moderation_status', 'approved')
     .gte('start_date', new Date().toISOString())
     .order('start_date', { ascending: true })
     .limit(4)
+
+  // Transform the data to flatten organizer array
+  const upcomingEvents = eventsData?.map(event => ({
+    ...event,
+    organizer: Array.isArray(event.organizer) && event.organizer.length > 0
+      ? event.organizer[0]
+      : undefined
+  }))
 
   return (
     <div className="min-h-screen bg-white">

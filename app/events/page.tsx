@@ -29,7 +29,18 @@ export default async function EventsPage({
     query = query.ilike('location_city', `%${params.city}%`)
   }
 
-  const { data: events, error } = await query
+  const { data: eventsData, error } = await query
+
+  // Transform the data to flatten organizer array
+  const events = eventsData?.map(event => ({
+    ...event,
+    organizer: Array.isArray(event.organizer) && event.organizer.length > 0
+      ? event.organizer[0]
+      : undefined,
+    community: Array.isArray(event.community) && event.community.length > 0
+      ? event.community[0]
+      : undefined
+  }))
 
   // Get unique cities for filter
   const { data: allEvents } = await supabase
