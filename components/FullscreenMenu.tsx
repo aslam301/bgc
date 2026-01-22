@@ -58,12 +58,12 @@ export default function FullscreenMenu({ user, profile }: FullscreenMenuProps) {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[90]"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998]"
             onClick={() => setIsOpen(false)}
           />
 
           {/* Menu Panel */}
-          <div className="fixed inset-0 z-[100] flex items-start justify-end p-4 pointer-events-none">
+          <div className="fixed inset-0 z-[9999] flex items-start justify-end p-4 pointer-events-none">
             <div className="pointer-events-auto w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden animate-slide-in">
               {/* Header */}
               <div className="bg-gradient-to-br from-stone-900 to-black p-6 text-white">

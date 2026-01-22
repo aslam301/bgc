@@ -33,7 +33,7 @@ export default function LoadingSpinner() {
   }, [])
 
   return (
-    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[100] flex items-center justify-center">
+    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[10000] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="relative w-24 h-24 animate-spin-slow grayscale opacity-40">
           <Image
