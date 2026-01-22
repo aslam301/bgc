@@ -39,7 +39,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-white dark:bg-stone-950 text-stone-900 dark:text-stone-100 transition-colors`}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

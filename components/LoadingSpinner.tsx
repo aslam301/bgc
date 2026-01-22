@@ -33,9 +33,9 @@ export default function LoadingSpinner() {
   }, [])
 
   return (
-    <div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-[10000] flex items-center justify-center">
+    <div className="fixed inset-0 bg-white/90 dark:bg-stone-950/90 backdrop-blur-sm z-[10000] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="relative w-24 h-24 animate-spin-slow grayscale opacity-40">
+        <div className="relative w-24 h-24 animate-spin-slow grayscale opacity-40 dark:opacity-30">
           <Image
             src="/logo.png"
             alt="Loading..."
@@ -44,7 +44,7 @@ export default function LoadingSpinner() {
             priority
           />
         </div>
-        <p className="text-sm text-stone-600 font-medium animate-pulse">
+        <p className="text-sm text-stone-600 dark:text-stone-400 font-medium animate-pulse">
           {text}
         </p>
       </div>
