@@ -4,19 +4,33 @@ import { useState } from 'react'
 import { useActionState } from 'react'
 import { createEvent } from '@/lib/actions/events'
 import RichTextEditor from '@/components/RichTextEditor'
+import EventPreview from '@/components/EventPreview'
 import Link from 'next/link'
 
 interface EventFormProps {
   userId: string
   cities: Array<{ id: string; name: string }>
+  organizerName?: string
 }
 
-export default function EventForm({ userId, cities }: EventFormProps) {
+export default function EventForm({ userId, cities, organizerName }: EventFormProps) {
   const [description, setDescription] = useState('<p>Describe your event here...</p>')
   const [state, formAction] = useActionState(createEvent, null)
 
+  // Preview state
+  const [previewData, setPreviewData] = useState({
+    title: '',
+    start_date: '',
+    location_city: '',
+    ticket_price: 0,
+    organizer_name: organizerName || 'You'
+  })
+
   return (
-    <div className="bg-white rounded-lg sm:shadow-md p-4 sm:p-8">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      {/* Form Section */}
+      <div className="lg:col-span-7">
+        <div className="bg-white rounded-lg sm:shadow-md p-4 sm:p-8">
       {/* Success Message */}
       {state?.success && (
         <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -56,6 +70,7 @@ export default function EventForm({ userId, cities }: EventFormProps) {
             required
             className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
             placeholder="Summer Board Game Night"
+            onChange={(e) => setPreviewData({ ...previewData, title: e.target.value })}
           />
         </div>
 
@@ -86,6 +101,7 @@ export default function EventForm({ userId, cities }: EventFormProps) {
               type="datetime-local"
               required
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+              onChange={(e) => setPreviewData({ ...previewData, start_date: e.target.value })}
             />
           </div>
           <div>
@@ -141,6 +157,7 @@ export default function EventForm({ userId, cities }: EventFormProps) {
               name="location_city"
               required
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white"
+              onChange={(e) => setPreviewData({ ...previewData, location_city: e.target.value })}
             >
               <option value="">Select a city</option>
               {cities.map((city) => (
@@ -181,6 +198,7 @@ export default function EventForm({ userId, cities }: EventFormProps) {
               defaultValue="0"
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
               placeholder="0.00"
+              onChange={(e) => setPreviewData({ ...previewData, ticket_price: parseFloat(e.target.value) || 0 })}
             />
             <p className="text-xs text-slate-500 mt-1">Set to 0 for free events</p>
           </div>
@@ -210,6 +228,13 @@ export default function EventForm({ userId, cities }: EventFormProps) {
           </Link>
         </div>
       </form>
+        </div>
+      </div>
+
+      {/* Preview Section */}
+      <div className="lg:col-span-5">
+        <EventPreview formData={previewData} />
+      </div>
     </div>
   )
 }

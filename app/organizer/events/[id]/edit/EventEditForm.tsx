@@ -4,16 +4,28 @@ import { useState } from 'react'
 import { useActionState } from 'react'
 import { updateEvent } from '@/lib/actions/organizer'
 import RichTextEditor from '@/components/RichTextEditor'
+import EventPreview from '@/components/EventPreview'
 import Link from 'next/link'
 import { format } from 'date-fns'
 
 interface EventEditFormProps {
   event: any
+  cities: Array<{ id: string; name: string }>
+  organizerName?: string
 }
 
-export default function EventEditForm({ event }: EventEditFormProps) {
+export default function EventEditForm({ event, cities, organizerName }: EventEditFormProps) {
   const [description, setDescription] = useState(event.description || '<p>Describe your event here...</p>')
   const [state, formAction] = useActionState(updateEvent, null)
+
+  // Preview state
+  const [previewData, setPreviewData] = useState({
+    title: event.title || '',
+    start_date: event.start_date || '',
+    location_city: event.location_city || '',
+    ticket_price: event.ticket_price || 0,
+    organizer_name: organizerName || 'You'
+  })
 
   // Format dates for datetime-local input
   const formatDateForInput = (date: string | null) => {
@@ -22,7 +34,10 @@ export default function EventEditForm({ event }: EventEditFormProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-8">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      {/* Form Section */}
+      <div className="lg:col-span-7">
+        <div className="bg-white rounded-lg shadow-md p-8">
       {/* Success Message */}
       {state?.success && (
         <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -60,6 +75,7 @@ export default function EventEditForm({ event }: EventEditFormProps) {
             defaultValue={event.title}
             className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
             placeholder="Summer Board Game Night"
+            onChange={(e) => setPreviewData({ ...previewData, title: e.target.value })}
           />
         </div>
 
@@ -88,6 +104,7 @@ export default function EventEditForm({ event }: EventEditFormProps) {
               required
               defaultValue={formatDateForInput(event.start_date)}
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
+              onChange={(e) => setPreviewData({ ...previewData, start_date: e.target.value })}
             />
           </div>
           <div>
@@ -141,15 +158,21 @@ export default function EventEditForm({ event }: EventEditFormProps) {
             <label htmlFor="location_city" className="block text-sm font-medium text-slate-700 mb-2">
               City *
             </label>
-            <input
+            <select
               id="location_city"
               name="location_city"
-              type="text"
               required
               defaultValue={event.location_city}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
-              placeholder="Mumbai"
-            />
+              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white"
+              onChange={(e) => setPreviewData({ ...previewData, location_city: e.target.value })}
+            >
+              <option value="">Select a city</option>
+              {cities.map((city) => (
+                <option key={city.id} value={city.name}>
+                  {city.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -183,6 +206,7 @@ export default function EventEditForm({ event }: EventEditFormProps) {
               defaultValue={event.ticket_price || 0}
               className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent"
               placeholder="0.00"
+              onChange={(e) => setPreviewData({ ...previewData, ticket_price: parseFloat(e.target.value) || 0 })}
             />
             <p className="text-xs text-slate-500 mt-1">Set to 0 for free events</p>
           </div>
@@ -214,6 +238,13 @@ export default function EventEditForm({ event }: EventEditFormProps) {
           </Link>
         </div>
       </form>
+        </div>
+      </div>
+
+      {/* Preview Section */}
+      <div className="lg:col-span-5">
+        <EventPreview formData={previewData} />
+      </div>
     </div>
   )
 }

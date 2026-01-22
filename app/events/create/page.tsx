@@ -11,7 +11,7 @@ export default async function CreateEventPage() {
     redirect('/login')
   }
 
-  // Fetch active cities
+  // Fetch active cities and user profile
   const supabase = await createClient()
   const { data: cities } = await supabase
     .from('cities')
@@ -19,20 +19,26 @@ export default async function CreateEventPage() {
     .eq('is_active', true)
     .order('display_order', { ascending: true })
 
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('name')
+    .eq('id', user.id)
+    .single()
+
   return (
     <div className="min-h-screen bg-stone-50 pt-16">
       <Navigation />
 
       {/* Header */}
       <div className="bg-white border-b border-stone-200">
-        <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 mb-2">Create Event</h1>
           <p className="text-sm sm:text-base lg:text-lg text-stone-600">Host a board game event in your community</p>
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-0 sm:px-4 py-4 sm:py-8 lg:px-8">
-        <EventForm userId={user.id} cities={cities || []} />
+      <main className="max-w-7xl mx-auto px-4 py-4 sm:py-8 sm:px-6 lg:px-8">
+        <EventForm userId={user.id} cities={cities || []} organizerName={profile?.name} />
       </main>
     </div>
   )

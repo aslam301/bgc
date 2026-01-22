@@ -14,7 +14,12 @@
       "WebFetch(domain:luma.com)",
       "Bash(npm run build:*)",
       "Bash(ls:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(find:*)",
+      "Bash(while read f)",
+      "Bash(done)",
+      "Bash(if [ -f \"app/admin/events/page.tsx\" ])",
+      "Bash(fi)"
     ]
   }
 }
