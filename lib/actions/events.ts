@@ -139,8 +139,6 @@ export async function registerForEvent(prevState: any, formData: FormData) {
       event_id: eventId,
       user_id: user.id,
       status: event.ticket_price > 0 ? 'pending_payment' : 'confirmed',
-      amount_paid: 0, // Will be updated after payment
-      payment_method: null,
     })
 
   if (regError) {
