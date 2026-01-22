@@ -28,13 +28,13 @@ export default function UserMenu({ user, profile }: UserMenuProps) {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-50 transition"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-stone-50 transition"
       >
-        <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-medium">
+        <div className="w-8 h-8 bg-gradient-to-br from-brand-500 to-brand-700 rounded-full flex items-center justify-center text-white font-semibold">
           {profile?.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase()}
         </div>
         <svg
-          className={`w-4 h-4 text-slate-600 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-stone-600 transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -44,25 +44,25 @@ export default function UserMenu({ user, profile }: UserMenuProps) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-slate-200 py-2">
+        <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-stone-200 py-2 z-[60]">
           {/* User Info */}
-          <div className="px-4 py-3 border-b border-slate-200">
-            <p className="text-sm font-medium text-slate-900">{profile?.name || 'User'}</p>
-            <p className="text-xs text-slate-600 truncate">{user.email}</p>
+          <div className="px-4 py-3 border-b border-stone-200">
+            <p className="text-sm font-semibold text-stone-900">{profile?.name || 'User'}</p>
+            <p className="text-xs text-stone-600 truncate">{user.email}</p>
           </div>
 
           {/* Menu Items */}
           <div className="py-1">
             <Link
               href="/dashboard"
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition"
+              className="block px-4 py-2 text-sm text-stone-900 font-medium hover:bg-brand-50 hover:text-brand-700 transition"
               onClick={() => setIsOpen(false)}
             >
               <span className="inline-block w-5">🏠</span> Dashboard
             </Link>
             <Link
               href="/organizer"
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition"
+              className="block px-4 py-2 text-sm text-stone-900 font-medium hover:bg-brand-50 hover:text-brand-700 transition"
               onClick={() => setIsOpen(false)}
             >
               <span className="inline-block w-5">🎯</span> My Events
@@ -70,7 +70,7 @@ export default function UserMenu({ user, profile }: UserMenuProps) {
             {profile?.role === 'super_admin' && (
               <Link
                 href="/admin"
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition"
+                className="block px-4 py-2 text-sm text-stone-900 font-medium hover:bg-brand-50 hover:text-brand-700 transition"
                 onClick={() => setIsOpen(false)}
               >
                 <span className="inline-block w-5">⚙️</span> Admin Panel
@@ -79,11 +79,11 @@ export default function UserMenu({ user, profile }: UserMenuProps) {
           </div>
 
           {/* Logout */}
-          <div className="border-t border-slate-200 py-1">
+          <div className="border-t border-stone-200 py-1">
             <form action={logout}>
               <button
                 type="submit"
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition"
+                className="w-full text-left px-4 py-2 text-sm text-red-600 font-medium hover:bg-red-50 transition"
               >
                 <span className="inline-block w-5">🚪</span> Sign Out
               </button>
