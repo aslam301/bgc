@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { getUser } from '@/lib/actions/auth'
 import Link from 'next/link'
 import { format } from 'date-fns'
+import { Calendar, Check, Clock, MapPin, DollarSign, Users, Edit, Eye } from 'lucide-react'
 
 export default async function OrganizerDashboard() {
   const supabase = await createClient()
@@ -23,52 +24,46 @@ export default async function OrganizerDashboard() {
   const pendingEvents = events?.filter(e => e.moderation_status === 'pending').length || 0
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h2 className="text-3xl font-bold text-stone-900">My Events</h2>
-        <p className="text-stone-600 mt-1">Manage all your events in one place</p>
+        <h2 className="text-2xl sm:text-3xl font-black text-foreground uppercase">My Events</h2>
+        <p className="text-foreground mt-1 font-mono">Manage all your events in one place</p>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="bg-coral/20 border-2 border-ink shadow-neo p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-stone-600">Total Events</p>
-              <p className="text-3xl font-bold text-stone-900 mt-2">{totalEvents}</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-foreground font-bold">Total Events</p>
+              <p className="text-3xl font-black text-foreground mt-2">{totalEvents}</p>
             </div>
-            <div className="w-12 h-12 bg-stone-100 rounded-lg flex items-center justify-center">
-              <svg className="w-7 h-7 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+            <div className="w-12 h-12 bg-coral border-2 border-ink flex items-center justify-center">
+              <Calendar size={24} strokeWidth={2.5} className="text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
+        <div className="bg-mint/20 border-2 border-ink shadow-neo p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-stone-600">Published</p>
-              <p className="text-3xl font-bold text-green-600 mt-2">{publishedEvents}</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-foreground font-bold">Published</p>
+              <p className="text-3xl font-black text-mint mt-2">{publishedEvents}</p>
             </div>
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <svg className="w-7 h-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+            <div className="w-12 h-12 bg-mint border-2 border-ink flex items-center justify-center">
+              <Check size={24} strokeWidth={2.5} className="text-ink" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
+        <div className="bg-sunny/20 border-2 border-ink shadow-neo p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-stone-600">Pending Approval</p>
-              <p className="text-3xl font-bold text-orange-600 mt-2">{pendingEvents}</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-foreground font-bold">Pending Approval</p>
+              <p className="text-3xl font-black text-sunny mt-2">{pendingEvents}</p>
             </div>
-            <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-              <svg className="w-7 h-7 text-orange-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+            <div className="w-12 h-12 bg-sunny border-2 border-ink flex items-center justify-center">
+              <Clock size={24} strokeWidth={2.5} className="text-ink" />
             </div>
           </div>
         </div>
@@ -76,21 +71,19 @@ export default async function OrganizerDashboard() {
 
       {/* Events List */}
       {!events || events.length === 0 ? (
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-200 p-12 text-center">
-          <div className="w-20 h-20 bg-stone-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg className="w-12 h-12 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+        <div className="bg-card border-2 border-ink shadow-neo-lg p-8 sm:p-12 text-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-coral border-2 border-ink flex items-center justify-center mx-auto mb-4">
+            <Calendar size={32} strokeWidth={2.5} className="text-white" />
           </div>
-          <h3 className="text-2xl font-bold text-stone-900 mb-2">No Events Yet</h3>
-          <p className="text-stone-600 mb-6">
+          <h3 className="text-xl sm:text-2xl font-black text-foreground mb-2 uppercase">No Events Yet</h3>
+          <p className="text-foreground mb-6 font-mono">
             Create your first event and start building your community!
           </p>
           <Link
             href="/events/create"
-            className="inline-block px-6 py-3 bg-stone-900 text-white rounded-xl hover:bg-stone-800 transition font-semibold shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-coral text-white border-2 border-ink shadow-neo hover:shadow-neo-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-bold uppercase tracking-wider"
           >
-            Create Your First Event
+            Create Your First Event →
           </Link>
         </div>
       ) : (
@@ -101,7 +94,7 @@ export default async function OrganizerDashboard() {
             return (
               <div
                 key={event.id}
-                className="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 hover:shadow-md transition"
+                className="bg-card border-2 border-ink shadow-neo hover:shadow-neo-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-4 sm:p-6"
               >
                 <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
                   {/* Event Info */}
@@ -110,77 +103,69 @@ export default async function OrganizerDashboard() {
                       <Link
                         href={`/events/${event.id}`}
                         target="_blank"
-                        className="text-xl font-bold text-stone-900 hover:text-brand-600 transition"
+                        className="text-lg sm:text-xl font-black text-foreground hover:text-coral transition"
                       >
                         {event.title}
                       </Link>
                       <span
-                        className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                        className={`px-3 py-1 text-xs font-bold border-2 border-ink uppercase tracking-wider ${
                           event.status === 'published'
-                            ? 'bg-green-50 border border-green-200 text-green-800'
+                            ? 'bg-mint text-ink'
                             : event.status === 'draft'
-                            ? 'bg-stone-50 border border-stone-200 text-stone-800'
+                            ? 'bg-card text-foreground'
                             : event.status === 'cancelled'
-                            ? 'bg-red-50 border border-red-200 text-red-800'
-                            : 'bg-yellow-50 border border-yellow-200 text-yellow-800'
+                            ? 'bg-coral text-white'
+                            : 'bg-sunny text-ink'
                         }`}
                       >
                         {event.status}
                       </span>
                       <span
-                        className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                        className={`px-3 py-1 text-xs font-bold border-2 border-ink uppercase tracking-wider ${
                           event.moderation_status === 'approved'
-                            ? 'bg-green-50 border border-green-200 text-green-800'
+                            ? 'bg-mint text-ink'
                             : event.moderation_status === 'pending'
-                            ? 'bg-orange-50 border border-orange-200 text-orange-800'
-                            : 'bg-red-50 border border-red-200 text-red-800'
+                            ? 'bg-sunny text-ink'
+                            : 'bg-coral text-white'
                         }`}
                       >
                         {event.moderation_status}
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm text-stone-600 mb-4">
-                      <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <span className="font-medium">{format(new Date(event.start_date), 'PP')}</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 text-sm text-foreground mb-4">
+                      <div className="flex items-center gap-2 font-mono">
+                        <Calendar size={16} strokeWidth={2.5} className="text-coral" />
+                        <span className="font-bold">{format(new Date(event.start_date), 'PP')}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        </svg>
-                        <span className="font-medium">{event.location_city}</span>
+                      <div className="flex items-center gap-2 font-mono">
+                        <MapPin size={16} strokeWidth={2.5} className="text-grape" />
+                        <span className="font-bold">{event.location_city}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="font-medium">
+                      <div className="flex items-center gap-2 font-mono">
+                        <DollarSign size={16} strokeWidth={2.5} className="text-sunny" />
+                        <span className="font-bold">
                           {event.ticket_price > 0 ? `₹${event.ticket_price}` : 'Free'}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <span className="font-medium">{registrationCount}
+                      <div className="flex items-center gap-2 font-mono">
+                        <Users size={16} strokeWidth={2.5} className="text-mint" />
+                        <span className="font-bold">{registrationCount}
                         {event.max_attendees && ` / ${event.max_attendees}`}</span>
                       </div>
                     </div>
 
                     {event.moderation_status === 'rejected' && event.admin_notes && (
-                      <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-xl">
-                        <p className="text-sm text-red-800">
+                      <div className="mt-3 p-3 bg-coral border-2 border-ink shadow-neo-sm">
+                        <p className="text-sm text-white font-bold">
                           <strong>Rejection Reason:</strong> {event.admin_notes}
                         </p>
                       </div>
                     )}
 
                     {event.moderation_status === 'pending' && (
-                      <div className="mt-3 p-3 bg-orange-50 border border-orange-200 rounded-xl">
-                        <p className="text-sm text-orange-800">
+                      <div className="mt-3 p-3 bg-sunny border-2 border-ink shadow-neo-sm">
+                        <p className="text-sm text-ink font-bold">
                           ⏳ Your event is pending approval. We typically review events within 24 hours.
                         </p>
                       </div>
@@ -193,21 +178,17 @@ export default async function OrganizerDashboard() {
                       <>
                         <Link
                           href={`/organizer/events/${event.id}/edit`}
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-900 text-white rounded-lg hover:bg-stone-800 transition font-medium text-sm shadow-sm"
+                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-coral text-white border-2 border-ink shadow-neo-sm hover:shadow-neo hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-bold text-sm uppercase tracking-wider"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                          </svg>
-                          Edit Event
+                          <Edit size={16} strokeWidth={2.5} />
+                          Edit
                         </Link>
                         <Link
                           href={`/organizer/events/${event.id}/attendees`}
-                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-stone-100 text-stone-900 border border-stone-300 rounded-lg hover:bg-stone-200 transition font-medium text-sm"
+                          className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-grape text-white border-2 border-ink shadow-neo-sm hover:shadow-neo hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-bold text-sm uppercase tracking-wider"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                          </svg>
-                          View Attendees
+                          <Eye size={16} strokeWidth={2.5} />
+                          Attendees
                         </Link>
                       </>
                     )}

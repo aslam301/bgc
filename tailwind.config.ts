@@ -24,6 +24,13 @@ const config: Config = {
           800: '#4d4310',
           900: '#2e2809',
         },
+        // NeoBrutalism vibrant palette
+        coral: "hsl(var(--coral))",
+        sunny: "hsl(var(--sunny))",
+        grape: "hsl(var(--grape))",
+        mint: "hsl(var(--mint))",
+        sky: "hsl(var(--sky))",
+        ink: "hsl(var(--ink))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -69,10 +76,19 @@ const config: Config = {
         'off-white': '#fcfcfa',
         'warm-gray': '#f5f5f4',
       },
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        'neo-sm': '2px 2px 0 0 hsl(var(--ink))',
+        'neo': '4px 4px 0 0 hsl(var(--ink))',
+        'neo-lg': '6px 6px 0 0 hsl(var(--ink))',
       },
       backdropBlur: {
         xs: '2px',

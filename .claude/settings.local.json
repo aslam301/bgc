@@ -19,7 +19,20 @@
       "Bash(while read f)",
       "Bash(done)",
       "Bash(if [ -f \"app/admin/events/page.tsx\" ])",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(timeout /t 3)",
+      "WebFetch(domain:www.retroui.dev)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.shadcn.io)",
+      "Bash(npx shadcn@latest add button card badge input textarea select checkbox tabs accordion dropdown-menu dialog alert avatar progress -y)",
+      "Bash(npx shadcn@latest init -y)",
+      "Bash(npx shadcn@latest add card:*)",
+      "Bash(npx shadcn@latest add badge input textarea select checkbox tabs accordion dropdown-menu dialog alert avatar progress label radio-group tooltip drawer toast -y)",
+      "Bash(npx shadcn@latest add badge input textarea select checkbox tabs accordion dropdown-menu dialog alert avatar progress label radio-group tooltip drawer sonner -y)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run lint:*)",
+      "Bash(git add:*)"
     ]
   }
 }

@@ -18,12 +18,12 @@ export default async function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white border-b border-stone-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-card/95 backdrop-blur-sm border-b-2 border-ink shadow-neo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 group-hover:scale-105 transition-transform">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14">
               <Image
                 src="/logo.png"
                 alt="BoardGameCulture Logo"
@@ -32,10 +32,10 @@ export default async function Navigation() {
                 priority
               />
             </div>
-            <span className="text-base sm:text-xl font-bold text-stone-900 hidden sm:block">
+            <span className="text-base sm:text-xl font-black text-foreground hidden sm:block uppercase">
               BoardGameCulture
             </span>
-            <span className="text-base font-bold text-stone-900 sm:hidden">
+            <span className="text-base font-black text-foreground sm:hidden uppercase">
               BGC
             </span>
           </Link>

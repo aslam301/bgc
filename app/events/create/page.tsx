@@ -26,14 +26,14 @@ export default async function CreateEventPage() {
     .single()
 
   return (
-    <div className="min-h-screen bg-stone-50 pt-16">
+    <div className="min-h-screen bg-background art-bg pt-16">
       <Navigation />
 
       {/* Header */}
-      <div className="bg-white border-b border-stone-200">
+      <div className="bg-card border-b-2 border-ink">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:py-8 sm:px-6 lg:px-8">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-900 mb-2">Create Event</h1>
-          <p className="text-sm sm:text-base lg:text-lg text-stone-600">Host a board game event in your community</p>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-foreground mb-2 uppercase">Create Event</h1>
+          <p className="text-sm sm:text-base lg:text-lg text-muted-foreground font-mono">Host a board game event in your community</p>
         </div>
       </div>
 

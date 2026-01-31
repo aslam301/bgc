@@ -4,12 +4,15 @@ import { login } from '@/lib/actions/auth'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useActionState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { ArrowRight, ArrowLeft } from 'lucide-react'
 
 export default function LoginPage() {
   const [state, formAction] = useActionState(login, null)
 
   return (
-    <div className="min-h-screen bg-stone-50 flex items-center justify-center p-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-background art-bg flex items-center justify-center p-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8">
@@ -19,29 +22,30 @@ export default function LoginPage() {
                 src="/logo.png"
                 alt="BoardGameCulture Logo"
                 fill
-                className="object-contain"
+                className="object-contain p-2"
               />
             </div>
           </Link>
-          <h1 className="text-2xl sm:text-3xl font-bold text-stone-900 mb-2">
+          <div className="mb-3 text-3xl animate-float">🎲</div>
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground mb-2 uppercase">
             Welcome Back
           </h1>
-          <p className="text-sm sm:text-base text-stone-600">
+          <p className="text-sm sm:text-base text-foreground font-mono">
             Sign in to BoardGameCulture
           </p>
         </div>
 
         {/* Error Messages */}
         {state?.error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-            <p className="text-sm text-red-800 font-medium">
+          <div className="mb-6 p-4 bg-coral border-2 border-ink shadow-neo">
+            <p className="text-sm text-white font-bold">
               {state.errorType === 'email_not_confirmed' ? (
                 <>
                   ⚠️ Email not confirmed. Please check your inbox and click the confirmation link.
                   <br />
-                  <span className="text-xs mt-2 block">
+                  <span className="text-xs mt-2 block font-mono">
                     Didn't receive the email? Check your spam folder or{' '}
-                    <Link href="/signup" className="underline">try signing up again</Link>.
+                    <Link href="/signup" className="underline font-bold">try signing up again</Link>.
                   </span>
                 </>
               ) : (
@@ -52,42 +56,42 @@ export default function LoginPage() {
         )}
 
         {/* Form */}
-        <form action={formAction} className="bg-white border border-stone-200 rounded-2xl p-4 sm:p-8 sm:shadow-sm">
+        <form action={formAction} className="bg-card border-2 border-ink shadow-[6px_6px_0_0_hsl(var(--ink))] p-4 sm:p-8">
           <div className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">
+              <Label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-foreground font-bold mb-2">
                 Email Address
-              </label>
-              <input
+              </Label>
+              <Input
                 id="email"
                 name="email"
                 type="email"
                 required
                 autoComplete="email"
-                className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border-2 border-ink shadow-neo-sm focus:shadow-neo transition-shadow font-bold"
                 placeholder="you@example.com"
               />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label htmlFor="password" className="block text-sm font-medium text-stone-700">
+                <Label htmlFor="password" className="block text-xs font-mono uppercase tracking-wider text-foreground font-bold">
                   Password
-                </label>
+                </Label>
                 <Link
                   href="/forgot-password"
-                  className="text-xs text-brand-600 hover:text-brand-700 font-medium transition"
+                  className="text-xs text-coral hover:text-coral/80 font-bold uppercase tracking-wider transition"
                 >
                   Forgot?
                 </Link>
               </div>
-              <input
+              <Input
                 id="password"
                 name="password"
                 type="password"
                 required
                 autoComplete="current-password"
-                className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent transition"
+                className="w-full px-4 py-3 border-2 border-ink shadow-neo-sm focus:shadow-neo transition-shadow font-bold"
                 placeholder="••••••••"
               />
             </div>
@@ -95,17 +99,17 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full mt-6 px-6 py-3 bg-stone-900 text-white rounded-xl hover:bg-stone-800 transition font-semibold shadow-sm"
+            className="w-full mt-6 px-6 py-3 bg-coral text-white border-2 border-ink shadow-neo hover:shadow-neo-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all font-bold uppercase tracking-wider flex items-center justify-center gap-2"
           >
-            Sign In
+            Sign In <ArrowRight size={18} strokeWidth={3} />
           </button>
         </form>
 
         {/* Sign Up Link */}
         <div className="mt-6 text-center">
-          <p className="text-sm text-stone-600">
+          <p className="text-sm text-foreground font-mono">
             Don't have an account?{' '}
-            <Link href="/signup" className="text-stone-900 font-semibold hover:text-brand-600 transition">
+            <Link href="/signup" className="text-coral font-bold hover:underline transition uppercase tracking-wider">
               Sign up
             </Link>
           </p>
@@ -113,8 +117,8 @@ export default function LoginPage() {
 
         {/* Back to Home */}
         <div className="mt-4 text-center">
-          <Link href="/" className="text-sm text-stone-600 hover:text-stone-900 font-medium transition">
-            ← Back to Home
+          <Link href="/" className="inline-flex items-center gap-2 text-sm text-foreground hover:text-coral font-bold transition uppercase tracking-wider">
+            <ArrowLeft size={14} strokeWidth={3} /> Back to Home
           </Link>
         </div>
       </div>
